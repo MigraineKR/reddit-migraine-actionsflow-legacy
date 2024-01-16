@@ -1,4 +1,4 @@
-name: Send a Discord message when new hot posts in subreddit
+name: Send a Discord message when new posts in subreddit
 on:
   reddit:
     url: https://www.reddit.com/r/migraine/new/
