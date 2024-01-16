@@ -1,4 +1,4 @@
-name: Send a discord message when new hot subreddit
+name: Send a Discord message when new hot posts in subreddit
 on:
   reddit:
     url: https://www.reddit.com/r/migraine/new/
@@ -20,4 +20,4 @@ jobs:
           DISCORD_AVATAR: ${{ secrets.DISCORD_AVATAR_REDDIT }}
         uses: Ilshidur/action-discord@master
         with:
-          args: "`Migraine - Reddit - New 🆕`'\n'**${{steps.escape.outputs.escaped_title}}**'\n'${{on.rss.outputs.link}}'\n\n'by. ${{on.rss.outputs.author}}"
+          args: "`Migraine - Reddit - New by. ${{on.reddit.outputs.author}} 🆕`'\n'**${{steps.escape.outputs.escaped_title}}**'\n'${{on.reddit.outputs.link}}"
