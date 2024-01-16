@@ -15,7 +15,7 @@ jobs:
           echo "::set-output name=escaped_title::$escaped_title"
       - name: Discord notification
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_REDDIT_HOT }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_REDDIT_NEW }}
           DISCORD_USERNAME: ${{ secrets.DISCORD_USERNAME_REDDIT }}
           DISCORD_AVATAR: ${{ secrets.DISCORD_AVATAR_REDDIT }}
         uses: Ilshidur/action-discord@master
