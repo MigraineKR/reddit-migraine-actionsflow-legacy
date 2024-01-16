@@ -20,4 +20,4 @@ jobs:
           DISCORD_AVATAR: ${{ secrets.DISCORD_AVATAR_REDDIT }}
         uses: Ilshidur/action-discord@master
         with:
-          args: "`Migraine - Reddit - New by. ${{on.reddit.outputs.author}} 🆕`'\n'**${{steps.escape.outputs.escaped_title}}**'\n'${{on.reddit.outputs.link}}"
+          args: "`Migraine - Reddit - New by. ${{on.reddit.outputs.author_fullname}} 🆕`'\n'**${{steps.escape.outputs.escaped_title}}**'\n'${{on.reddit.outputs.link}}"
