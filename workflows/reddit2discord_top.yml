@@ -1,0 +1,23 @@
+name: Send a Discord message when new top posts in subreddit
+on:
+  reddit:
+    url: https://www.reddit.com/r/migraine/top/
+jobs:
+  discord:
+    name: Send a message to discord
+    runs-on: ubuntu-latest
+    steps:
+      - name: Escape Quotes
+        id: escape
+        run: |
+          title="${{on.reddit.outputs.title}}"
+          escaped_title=$(echo "$title" | sed "s/'/\\\'/g" | sed 's/"/\\"/g')
+          echo "::set-output name=escaped_title::$escaped_title"
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_REDDIT_TOP }}
+          DISCORD_USERNAME: ${{ secrets.DISCORD_USERNAME_REDDIT }}
+          DISCORD_AVATAR: ${{ secrets.DISCORD_AVATAR_REDDIT }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "`Migraine - Reddit - Top by. ${{on.reddit.outputs.author}} 🏆`'\n'**${{steps.escape.outputs.escaped_title}}**'\n'${{on.reddit.outputs.link}}"
